@@ -1,0 +1,9 @@
+{% extends "base_template.html" %}
+{% block content %}
+<p>Hi {{ company_contact_name }},</p>
+<p>You have received a new job application for <strong>{{ job_title }}</strong>.</p>
+<p>Applicant: <strong>{{ applicant_name }}</strong></p>
+<p>Cover Letter:</p>
+<blockquote>{{ cover_letter }}</blockquote>
+<p>Log in to your dashboard to review the application.</p>
+{% endblock %}

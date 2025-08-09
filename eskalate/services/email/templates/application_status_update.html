@@ -1,0 +1,13 @@
+{% extends "base_template.html" %}
+{% block content %}
+<p>Hi {{ applicant_name }},</p>
+<p>Your application for <strong>{{ job_title }}</strong> at <strong>{{ company_name }}</strong> has been updated.</p>
+<p>Status: <strong>{{ status | upper }}</strong></p>
+{% if status == "accepted" %}
+<p>Congratulations! The company is interested in moving forward with you. They will contact you soon.</p>
+{% elif status == "rejected" %}
+<p>Unfortunately, your application was not successful this time. We encourage you to keep applying!</p>
+{% else %}
+<p>Your application is still being reviewed. We'll keep you posted.</p>
+{% endif %}
+{% endblock %}
