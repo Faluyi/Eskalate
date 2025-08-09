@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from typing import List
-from app.dependencies import get_db
-from app.schemas.company import CompanyCreate, CompanyResponse
-from app.schemas.base import BaseResponse
-from app.controllers import company_controller
-
-router = APIRouter(prefix="/companies", tags=["Companies"])
+from eskalate.db.util import get_db
+from eskalate.schemas.base import BaseResponse
+from eskalate.schemas.company.request import CompanyCreate
+from eskalate.schemas.company.response import CompanyResponse
+from eskalate.api.company.controller import company_controller
+ 
+router = APIRouter()
 
 @router.post("/", response_model=BaseResponse[CompanyResponse])
 def create_company(payload: CompanyCreate, db: Session = Depends(get_db)):

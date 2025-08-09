@@ -33,4 +33,4 @@ def decode_token(token: str) -> Dict:
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token",
             headers={"WWW-Authenticate": "Bearer"},
-        )
+        ) 

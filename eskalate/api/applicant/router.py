@@ -8,7 +8,7 @@ from eskalate.schemas.base import BaseResponse
 from eskalate.api.applicant.controller import applicant_controller
 
 
-router = APIRouter(prefix="/applicants", tags=["Applicants"])
+router = APIRouter()
 
 @router.post("/", response_model=BaseResponse[ApplicantResponse])
 def create_applicant(payload: ApplicantCreate, db: Session = Depends(get_db)):

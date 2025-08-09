@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from typing import List
-from app.dependencies import get_db
-from app.schemas.job import JobCreate, JobResponse
-from app.schemas.base import BaseResponse
-from app.controllers import job_controller
+from eskalate.api.job.controller import job_controller
+from eskalate.db.util import get_db
+from eskalate.schemas.base import BaseResponse
+from eskalate.schemas.job.request import JobCreate
+from eskalate.schemas.job.response import JobResponse
 
-router = APIRouter(prefix="/jobs", tags=["Jobs"])
+router = APIRouter()
 
 @router.post("/", response_model=BaseResponse[JobResponse])
 def create_job(payload: JobCreate, db: Session = Depends(get_db)):

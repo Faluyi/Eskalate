@@ -107,4 +107,7 @@ class ApplicationController:
         db.delete(application)
         db.commit()
         return BaseResponse(success=True, message="Application deleted", object=None)
+    
+    
+application_controller = ApplicationController()
 

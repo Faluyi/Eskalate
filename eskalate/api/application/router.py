@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from typing import List
-from app.dependencies import get_db
-from app.schemas.application import ApplicationCreate, ApplicationResponse
-from app.schemas.base import BaseResponse
-from app.controllers import application_controller
+from eskalate.api.application.controller import application_controller
+from eskalate.db.util import get_db
+from eskalate.schemas.application.request import ApplicationCreate
+from eskalate.schemas.application.response import ApplicationResponse
+from eskalate.schemas.base import BaseResponse
 
-router = APIRouter(prefix="/applications", tags=["Applications"])
+router = APIRouter()
 
 @router.post("/", response_model=BaseResponse[ApplicationResponse])
 def create_application(payload: ApplicationCreate, db: Session = Depends(get_db)):
